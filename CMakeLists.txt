@@ -11,12 +11,15 @@ set(GENERIC_LIB_SOVERSION "6")
 find_package(catkin REQUIRED COMPONENTS)
 
 catkin_package(
-  INCLUDE_DIRS
+  INCLUDE_DIRS include
   CATKIN_DEPENDS
   LIBRARIES tinyxml2_catkin
 )
 
-add_library(tinyxml2_catkin SHARED tinyxml2.cpp tinyxml2.h)
+include_directories(include ${catkin_INCLUDE_DIRS})
+
+
+add_library(tinyxml2_catkin SHARED src/tinyxml2.cpp)
 
 set_target_properties(tinyxml2_catkin PROPERTIES
 	VERSION "${GENERIC_LIB_VERSION}"
